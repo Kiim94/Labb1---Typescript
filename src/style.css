@@ -33,9 +33,10 @@ form{
     padding:0.4rem;
     font-size:1rem;
   }
-  button{
+  #add-course{
     padding:0.5rem;
     font-size:1rem;
+    font-weight:bold;
     max-width:200px;
     margin:0 auto;
     border-radius:10px;
@@ -44,6 +45,9 @@ form{
     cursor:pointer;
     &:active{
       box-shadow:0 3px 3px rgba(0,0,0,0.6);
+    }
+    &:hover{
+      background-color:rgb(206, 205, 205);
     }
   }
   select{
@@ -71,4 +75,10 @@ h1, h2{
   width:60px;
   text-align:center;
   white-space:nowrap;
+}
+
+@media (max-width:599px){
+  html{
+    font-size:14px;
+  }
 }
