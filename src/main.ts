@@ -1,8 +1,10 @@
 import './style.css'
 
 //en type för att man bara ska kunna välja a, b, c. Osäker om det behövs här, då en select används men bra träning kanske?
+//Detta säger att typen Progression kan vara antingen A, B eller C
 type Progression = "A" | "B" | "C";
 
+//Interface: mall för hur objektet Course ska se ut. Progression annorlunda, då den använder type från tidigare
 interface Course{
   code: string;
   courseName: string;
@@ -21,12 +23,11 @@ const syllabusInput = document.getElementById("syllabus") as HTMLInputElement;
 const addBtn = document.getElementById("add-course") as HTMLButtonElement;
 const courseTable = document.getElementById("course-table") as HTMLTableSectionElement;
 
-//lyssna efter klick. Validering innan input/data hamnar i array. Pga form behövs en preventDefault()
+//lyssna efter klick. Validering innan input/data hamnar i array. Pga form i html behövs en preventDefault()
 addBtn.addEventListener("click", (event) => {
   event.preventDefault();
 
-  //trimma input värden och validera. Progression har ingen trim: är en select från html
-
+  //trimma input värden och validera. Progression har ingen trim: är en select från html så bara value
   const code: string = codeInput.value.trim();
   const courseName : string = courseNameInput.value.trim();
   const progression: string = progressionSelect.value;
@@ -37,6 +38,7 @@ addBtn.addEventListener("click", (event) => {
       alert("Alla fält måste fyllas i!");
       return;
     }
+  //validering för progression: om varken a, b eller c är vald, skicka en alert.
   if(progression !== "A" && progression !== "B" && progression !== "C"){
     alert("Välj progression A, B eller C!");
     return;
@@ -70,7 +72,8 @@ addBtn.addEventListener("click", (event) => {
 function renderCourses(): void {
   courseTable.innerHTML = "";
 
-  //loopa igenom kurser, skapa tabellrader för varje "del" av kursen
+  /*loopa igenom kurser, skapa tabellrader för varje "del" av kursen
+  För varje objekt i arrayen courses - varje objekt följer interface Course - skapa tabellrad med kursinformation*/
   courses.forEach((course: Course) => {
     const row: HTMLTableRowElement = document.createElement("tr");
     const codeCell: HTMLTableCellElement = document.createElement("td");
@@ -84,9 +87,9 @@ function renderCourses(): void {
     progressionCell.textContent = course.progression;
     syllabusCell.textContent = course.syllabus;
 
-    //delete knapp. Lägg till lyssnare som tar bort kurs från array
-    //Filtrerar så att de kurser som inte har samma kod som den klickade knappen behålls.
-    //Rendera sedan om tabellen: visar uppdaterad lista
+    /*delete knapp: skapar knapp och lägger till klick-lyssnare.
+    När knapp klickas: kurs filtreras bort från arrayen, baseras på kurskoden (code)
+    Tabellen renderas om med uppdaterad lista*/
     const delBtn: HTMLButtonElement = document.createElement("button");
     delBtn.textContent = "Ta bort";
     delBtn.classList.add("deleteBtn");
