@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Labb1 - Typescript</title>
+    <script type="module" crossorigin src="/assets/index-CkCbXv1S.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Chv--K-1.css">
+  </head>
+  <body>
+    <section class="info">
+      <h1>Hantera kurser</h1>
+        <p>Här kan du lägga till och hantera kurser.</p>
+        <p>Du kan inte lägga till en kurs som redan existerar, och du kan inte heller lägga till en kurs
+          om du inte har fyllt i alla fält.</p>
+        <p>För att radera en kurs, klicka på "Ta bort" knappen för kursen du vill ta bort.</p>
+    </section>
+    
+    <form>
+      <label for="course-code">Kurskod:</label>
+      <input type="text" id="course-code" placeholder="Kurskod">
+      <label for="course-name">Kursnamn:</label>
+      <input type="text" id="course-name" placeholder="Kursnamn">
+      <label for="progression">Progression:</label>
+      <select id="progression">
+        <option value="" disabled selected>Välj</option>
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="C">C</option>
+      </select>
+      <label for="syllabus">Syllabus:</label>
+      <input type="text" id="syllabus" placeholder="Syllabus">
+      <button type="button" id="add-course">Lägg till kurs</button>
+    </form>
+
+    <h2>Kurslista</h2>
+    <div class="container-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Kurskod</th>
+          <th>Kursnamn</th>
+          <th>Progression</th>
+          <th>Syllabus</th>
+          <th class="delete-column">Radera</th>
+        </tr>
+      </thead>
+      <tbody id="course-table">
+
+      </tbody>
+    </table>
+    </div>
+  </body>
+</html>
