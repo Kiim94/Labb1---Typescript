@@ -85,7 +85,7 @@ function renderCourses(): void {
     codeCell.textContent = course.code;
     nameCell.textContent = course.courseName;
     progressionCell.textContent = course.progression;
-    syllabusCell.textContent = course.syllabus;
+    syllabusCell.innerHTML = "<a href='" + course.syllabus + "' target='_blank'>" + course.syllabus + "</a>";
 
     /*delete knapp: skapar knapp och lägger till klick-lyssnare.
     När knapp klickas: kurs filtreras bort från arrayen, baseras på kurskoden (code)
